@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{model} \PYG{o}{=} \PYG{n}{MelSpectrogramTransformer}\PYG{p}{(}
+    \PYG{n}{input\PYGZus{}dim}\PYG{o}{=}\PYG{n}{n\PYGZus{}mels}\PYG{p}{,}
+    \PYG{n}{embed\PYGZus{}dim}\PYG{o}{=}\PYG{l+m+mi}{128}\PYG{p}{,}      \PYG{c+c1}{\PYGZsh{} 埋込次元}
+    \PYG{n}{nhead}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,}            \PYG{c+c1}{\PYGZsh{} Attnヘッド数}
+    \PYG{n}{nhid}\PYG{o}{=}\PYG{l+m+mi}{256}\PYG{p}{,}           \PYG{c+c1}{\PYGZsh{} FFN隠れ層}
+    \PYG{n}{nlayers}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}          \PYG{c+c1}{\PYGZsh{} Encoder層数}
+    \PYG{n}{n\PYGZus{}classes}\PYG{o}{=}\PYG{n}{num\PYGZus{}classes}\PYG{p}{,}
+    \PYG{n}{max\PYGZus{}len}\PYG{o}{=}\PYG{n}{X}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
+\end{MintedVerbatim}

@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+*\PYG{+w}{ }出力:\PYG{+w}{ }Sigmoid関数
+*\PYG{+w}{ }最適化アルゴリズム:\PYG{+w}{ }Adam
+*\PYG{+w}{ }損失関数:\PYG{+w}{ }バイナリクロスエントロピー
+\end{MintedVerbatim}
