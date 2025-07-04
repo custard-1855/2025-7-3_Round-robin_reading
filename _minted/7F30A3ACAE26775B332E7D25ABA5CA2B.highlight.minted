@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+Micro\PYG{+w}{ }Precision/Recall/F1
+\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0}.9655\PYG{+w}{ }/\PYG{+w}{ }\PYG{l+m}{0}.8682\PYG{+w}{ }/\PYG{+w}{ }\PYG{l+m}{0}.9143
+Macro\PYG{+w}{   }\PYG{n+nv}{F1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0}.8458
+\end{MintedVerbatim}

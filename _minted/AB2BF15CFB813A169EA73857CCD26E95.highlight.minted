@@ -1,0 +1,22 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{+w}{                        }precision\PYG{+w}{    }recall\PYG{+w}{  }f1\PYGZhy{}score\PYG{+w}{   }support
+\PYG{+w}{            }Class\PYG{+w}{ }rain\PYG{+w}{       }\PYG{l+m}{0}.94\PYG{+w}{      }\PYG{l+m}{0}.84\PYG{+w}{      }\PYG{l+m}{0}.89\PYG{+w}{        }\PYG{l+m}{19}
+\PYG{+w}{ }Class\PYG{+w}{ }door\PYGZus{}wood\PYGZus{}knock\PYG{+w}{       }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{0}.85\PYG{+w}{      }\PYG{l+m}{0}.92\PYG{+w}{        }\PYG{l+m}{20}
+Class\PYG{+w}{ }door\PYGZus{}wood\PYGZus{}creaks\PYG{+w}{       }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{0}.83\PYG{+w}{      }\PYG{l+m}{0}.91\PYG{+w}{        }\PYG{l+m}{18}
+\PYG{+w}{  }Class\PYG{+w}{ }glass\PYGZus{}breaking\PYG{+w}{       }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{0}.80\PYG{+w}{      }\PYG{l+m}{0}.89\PYG{+w}{        }\PYG{l+m}{20}
+\PYG{+w}{        }Class\PYG{+w}{ }sneezing\PYG{+w}{       }\PYG{l+m}{0}.89\PYG{+w}{      }\PYG{l+m}{0}.85\PYG{+w}{      }\PYG{l+m}{0}.87\PYG{+w}{        }\PYG{l+m}{20}
+\PYG{+w}{       }Class\PYG{+w}{ }breathing\PYG{+w}{       }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{0}.55\PYG{+w}{      }\PYG{l+m}{0}.71\PYG{+w}{        }\PYG{l+m}{20}
+\PYG{+w}{        }Class\PYG{+w}{ }coughing\PYG{+w}{       }\PYG{l+m}{0}.89\PYG{+w}{      }\PYG{l+m}{0}.96\PYG{+w}{      }\PYG{l+m}{0}.92\PYG{+w}{        }\PYG{l+m}{25}
+\PYG{+w}{       }Class\PYG{+w}{ }footsteps\PYG{+w}{       }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{0}.93\PYG{+w}{      }\PYG{l+m}{0}.97\PYG{+w}{        }\PYG{l+m}{15}
+\PYG{+w}{        }Class\PYG{+w}{ }laughing\PYG{+w}{       }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{0}.88\PYG{+w}{      }\PYG{l+m}{0}.93\PYG{+w}{        }\PYG{l+m}{16}
+\PYG{+w}{  }Class\PYG{+w}{ }brushing\PYG{+w}{ }teeth\PYG{+w}{       }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{1}.00\PYG{+w}{        }\PYG{l+m}{25}
+\PYG{+w}{         }Class\PYG{+w}{ }snoring\PYG{+w}{       }\PYG{l+m}{0}.95\PYG{+w}{      }\PYG{l+m}{0}.95\PYG{+w}{      }\PYG{l+m}{0}.95\PYG{+w}{        }\PYG{l+m}{19}
+Class\PYG{+w}{ }drinking\PYGZus{}sipping\PYG{+w}{       }\PYG{l+m}{0}.96\PYG{+w}{      }\PYG{l+m}{0}.88\PYG{+w}{      }\PYG{l+m}{0}.92\PYG{+w}{        }\PYG{l+m}{25}
+\PYG{+w}{   }Class\PYG{+w}{ }pouring\PYGZus{}water\PYG{+w}{       }\PYG{l+m}{1}.00\PYG{+w}{      }\PYG{l+m}{0}.94\PYG{+w}{      }\PYG{l+m}{0}.97\PYG{+w}{        }\PYG{l+m}{16}
+\PYG{+w}{    }Class\PYG{+w}{ }toilet\PYGZus{}flush\PYG{+w}{       }\PYG{l+m}{0}.00\PYG{+w}{      }\PYG{l+m}{0}.00\PYG{+w}{      }\PYG{l+m}{0}.00\PYG{+w}{         }\PYG{l+m}{0}
+
+\PYG{+w}{             }micro\PYG{+w}{ }avg\PYG{+w}{       }\PYG{l+m}{0}.97\PYG{+w}{      }\PYG{l+m}{0}.87\PYG{+w}{      }\PYG{l+m}{0}.91\PYG{+w}{       }\PYG{l+m}{258}
+\PYG{+w}{             }macro\PYG{+w}{ }avg\PYG{+w}{       }\PYG{l+m}{0}.90\PYG{+w}{      }\PYG{l+m}{0}.80\PYG{+w}{      }\PYG{l+m}{0}.85\PYG{+w}{       }\PYG{l+m}{258}
+\PYG{+w}{          }weighted\PYG{+w}{ }avg\PYG{+w}{       }\PYG{l+m}{0}.97\PYG{+w}{      }\PYG{l+m}{0}.87\PYG{+w}{      }\PYG{l+m}{0}.91\PYG{+w}{       }\PYG{l+m}{258}
+\PYG{+w}{           }samples\PYG{+w}{ }avg\PYG{+w}{       }\PYG{l+m}{0}.98\PYG{+w}{      }\PYG{l+m}{0}.87\PYG{+w}{      }\PYG{l+m}{0}.90\PYG{+w}{       }\PYG{l+m}{258}
+\end{MintedVerbatim}

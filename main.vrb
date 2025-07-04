@@ -1,0 +1,23 @@
+\frametitle{補足: Classification Report (per class):}
+\begin{minted}[fontsize=\scriptsize]{bash}
+                        precision    recall  f1-score   support
+            Class rain       0.94      0.84      0.89        19
+ Class door_wood_knock       1.00      0.85      0.92        20
+Class door_wood_creaks       1.00      0.83      0.91        18
+  Class glass_breaking       1.00      0.80      0.89        20
+        Class sneezing       0.89      0.85      0.87        20
+       Class breathing       1.00      0.55      0.71        20
+        Class coughing       0.89      0.96      0.92        25
+       Class footsteps       1.00      0.93      0.97        15
+        Class laughing       1.00      0.88      0.93        16
+  Class brushing teeth       1.00      1.00      1.00        25
+         Class snoring       0.95      0.95      0.95        19
+Class drinking_sipping       0.96      0.88      0.92        25
+   Class pouring_water       1.00      0.94      0.97        16
+    Class toilet_flush       0.00      0.00      0.00         0
+
+             micro avg       0.97      0.87      0.91       258
+             macro avg       0.90      0.80      0.85       258
+          weighted avg       0.97      0.87      0.91       258
+           samples avg       0.98      0.87      0.90       258
+\end{minted}

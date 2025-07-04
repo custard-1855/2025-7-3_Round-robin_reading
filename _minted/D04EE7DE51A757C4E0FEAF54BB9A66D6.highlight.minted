@@ -1,0 +1,15 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+uv\PYG{+w}{ }run\PYG{+w}{ }./model\PYGZus{}module/eval.py\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{  }\PYGZhy{}\PYGZhy{}data\PYG{+w}{    }./dataset/esc50\PYGZus{}multilabel.npz\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{  }\PYGZhy{}\PYGZhy{}model\PYG{+w}{   }./checkpoints/label\PYGZhy{}14\PYGZus{}transformer.pth\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{  }\PYGZhy{}\PYGZhy{}batch\PYG{+w}{   }\PYG{l+m}{64}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{  }\PYGZhy{}\PYGZhy{}device\PYG{+w}{  }mps\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{  }\PYGZhy{}\PYGZhy{}threshold\PYG{+w}{ }\PYG{l+m}{0}.5
+
+\PYG{+w}{  }\PYG{o}{[}RESULT\PYG{o}{]}
+\PYG{n+nv}{Threshold}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0}.50
+Micro\PYG{+w}{ }Precision/Recall/F1
+\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0}.9655\PYG{+w}{ }/\PYG{+w}{ }\PYG{l+m}{0}.8682\PYG{+w}{ }/\PYG{+w}{ }\PYG{l+m}{0}.9143
+Macro\PYG{+w}{   }\PYG{n+nv}{F1}\PYG{+w}{                }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0}.8458
+
+\end{MintedVerbatim}

@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+uv\PYG{+w}{ }run\PYG{+w}{ }model\PYGZus{}module/train.py\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{     }\PYGZhy{}\PYGZhy{}data\PYG{+w}{ }./dataset/esc50\PYGZus{}multilabel.npz\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{     }\PYGZhy{}\PYGZhy{}batch\PYG{+w}{ }\PYG{l+m}{32}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{     }\PYGZhy{}\PYGZhy{}epochs\PYG{+w}{ }\PYG{l+m}{20}\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{     }\PYGZhy{}\PYGZhy{}lr\PYG{+w}{ }1e\PYGZhy{}3\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{     }\PYGZhy{}\PYGZhy{}val\PYGZhy{}split\PYG{+w}{ }\PYG{l+m}{0}.1\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{     }\PYGZhy{}\PYGZhy{}device\PYG{+w}{ }cuda\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{     }\PYGZhy{}\PYGZhy{}save\PYGZhy{}model\PYG{+w}{ }./checkpoints/label\PYGZhy{}14\PYGZus{}transformer.pth
+\end{MintedVerbatim}

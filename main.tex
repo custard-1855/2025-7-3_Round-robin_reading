@@ -3,296 +3,369 @@
 \usetheme[progressbar=frametitle]{metropolis}
 \renewcommand{\kanjifamilydefault}{\gtdefault}
 \usepackage{bm}
+\usepackage{minted}
 
-% タイトル、著者、所属、日付の設定 [65]
-\title{スマートホーム異常音検知研究計画} % [1]
-\author{竹本志恩} % Placeholder
+
+\title{\textbf{研究進捗報告}}
+\author{竹本志恩}
 \date{\today}
-
-% --- セクション開始時に目次を表示 ---
-% 「For Better Research Talk」[34, 35]の目次に関するアドバイス（短い発表では不要だが、長い場合は有効）と、
-% 「介護におけるHARと連合学習」[65, 66]の具体的な実装を参考に、セクション開始時に目次を表示します。
-\AtBeginSection[]{
-\begin{frame}[plain]
-\frametitle{目次} % フレームタイトルに「目次」と表示
-\tableofcontents[currentsection, hideallsubsections] % 現在のセクションを表示し、サブセクションは非表示
-\end{frame}
-}
 
 \begin{document}
 
-% タイトルスライド [34]
+% Slide 1: Title
 \begin{frame}
-\titlepage
+  \titlepage
 \end{frame}
 
-% ==============================================================================
-\section{研究背景} % [1]
-% ==============================================================================
-\begin{frame}{社会背景と研究の方向性} % 聴衆が関心を持てるよう、背景や見通しを含めて語る [23]
+% Slide 3: 研究背景
+\section{研究背景}
+\begin{frame}{これまでの研究背景}
     \begin{itemize}
-        \item \textbf{これまで：}
+        \item 少子高齢化による介護負担の増大
+        \item 安価で手軽な見守りシステムの需要
         \begin{itemize}
-            \item 少子高齢化による介護負担増大に対応するため、\textbf{安価で手軽な見守りシステム}が導入されてきました[1]。
-            \item その目的は、迅速な対応と監視負担の軽減です[1]。
-        \end{itemize}
-        \item \textbf{これから：}
-        \begin{itemize}
-            \item \textbf{Ambient Assisted Living (AAL)} の流れを汲み、ICT技術で高齢者の\textbf{自立した生活を支援}する方向へ[1]。
-            \item これを\textbf{行動認識}によって実現することを目指します[1]。
+            \item 迅速な対応
+            \item 監視の負担軽減
         \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{介護・医療負担軽減への貢献} % 伝えるべき内容を明確に [17, 18]
+\begin{frame}{研究背景に対する疑問}
+  \begin{itemize}
+    \item 施設での運用で介護者の負担は減る？
     \begin{itemize}
-        \item 少子高齢化により介護・医療負担が増大している中、在宅での介護・医療の重要性が高まっています[1]。
-        \item 高齢者が施設ではなく、慣れ親しんだ場所で自立した生活を送れるよう支援が求められます[1]。
-        \item 異常行動から早期に病気などを発見・対応することで、介護・医療負担の軽減に繋げます[1]。
-        \item この研究は、そのための基盤技術を提供するものです。
+        \item 本当にそれがやりたいことなのか?
     \end{itemize}
+    \item 「安価＋手軽さ」だけで、既存の技術と差別化できる？
+    \begin{itemize}
+        \item 他のセンサー（カメラ、ウェアラブル等）と比較して本当に手軽？
+        \item なぜ「音」を選ぶのか、理由が必要
+    \end{itemize}
+    \item なぜ機械学習を用いる？
+    \begin{itemize}
+        \item HAR（Human Activity Recognition）には、より古典的で、適用範囲は狭いが確実性の高い手法も存在するのでは？
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
-% ==============================================================================
-\section{全体ロードマップ} % [1]
-% ==============================================================================
-\begin{frame}{研究計画の大まかな予定} % 内容のバランスを確認し、時間配分を意識する [21]
-    \begin{itemize}
-        \item 研究計画書に基づき、大まかな予定を立案しました[1]。
-        \item 今後2週間で詳細を詰めます[1]。
-        \item \textbf{7月：基礎準備}[1]
-        \begin{itemize}
-            \item 背景サーベイ[1]
-            \item マルチラベル音響イベント検知モデルの段階的実装[1]
-            \item 異常イベントの音響データ収集[1]
-        \end{itemize}
-        \item \textbf{8月：必要な施策を実行}[2]
-        \begin{itemize}
-            \item データ不均衡への対応[2]
-            \item 簡単なFederated Learning (FL) の適用[2]
-            \item Federated Semi-Supervised Learningの調査・検討[2]
-            \item シミュレーション方法の調査・検討[2]
-        \end{itemize}
-    \end{itemize}
-\end{frame}
 
-\begin{frame}{ロードマップ（続き）} % 連続する情報を複数のスライドに分割 [27]
+\begin{frame}{研究背景を再考}
+    以下を念頭に置き，より深掘り
     \begin{itemize}
-        \item \textbf{9月：異常検知層の追加}[2]
+        \item \textbf{AAL (Ambient Assisted Living)}を汲む
         \begin{itemize}
-            \item 方法の検討[2]
-            \item 異常検知の実装・実験[2]
-        \end{itemize}
-        \item \textbf{10月：FLの実装・実験}[2]
-        \begin{itemize}
-            \item 集約法の工夫検討[2]
-        \end{itemize}
-        \item \textbf{今後の実験評価計画：}「実験評価計画立案のための計画」が起点となります[2]。
-        \item \textbf{主要なタスク：}[2]
-        \begin{itemize}
-            \item モデル実装
-            \item データ収集
-            \item データ不均衡対策
-            \item 半教師あり連合学習
-            \item 異常検知モデルの構築
-            \item シミュレーションの検討
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-% ==============================================================================
-\section{現在の進捗} % [2]
-% ==============================================================================
-\begin{frame}{モデル実装の進捗} % 具体的な内容を説明する [22]
-    \begin{itemize}
-        \item 「実験評価計画立案のための計画」が起点となります[2]。
-        \item \textbf{最低限のマルチラベル音響検知モデルを実装済み}[2]。
-        \begin{itemize}
-            \item 最初はCNNの簡単なモデル[2]。
-            \item 現在は先輩の実装を参考に、\textbf{Transformerベースのモデル}に移行[2]。
-        \end{itemize}
-        \item \textbf{マルチラベル実装のPoC (Proof of Concept) 作成済み}[2]。
-        \begin{itemize}
-            \item CNNによる最低限のマルチラベルモデルを作成[3]。
-            \item \textbf{マルチラベルデータ生成：}
+            \item 自立した生活を支援
+            \item 在宅での介護/医療を視野に
             \begin{itemize}
-                \item ESC-50データセットから14のカテゴリーを使用[3]。
-                \item 音の2つの組み合わせを全パターン作成しCSV化（約12000データ）[3]。
-                \item 現在、\textbf{9048データ}を学習に使用（ラベル組が均衡になるようにランダム取得）[3]。
-                \item \alert{要修正：} 後でテストデータも作成[3]。
+                \item 施設より在宅の方が自立に近づく
+                \item 問題の早期発見で医療/介護負担を軽減
+                \item 費用や労働量など，高齢者とサービス提供者の負担を軽減
             \end{itemize}
         \end{itemize}
+    \item \textbf{音特有の異常行動兆候の探求}
+        \begin{itemize}
+            \item 音独自の健康指標に着目
+            \item 呼吸音や咳き込みなど
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
-% \begin{frame}{Transformerモデルの定義} % 図や表の代わりにテキストで構造を説明する [32]
-%     \begin{itemize}
-%         \item モデルの定義はSlackで説明済み[3]。\alert{要理解：} モデル定義の意味を理解する[3]。
-%         \item 大まかなデータフロー（Mermaid図を参考に再構成）[3-6]：
-%         \begin{itemize}
-%             \item \textbf{Input:} (Batch, Frequencies, Time) の音響データ[3]。
-%             \item \textbf{BatchNorm1d:} 周波数次元で正規化[3]。
-%             \item \textbf{Permute:} 時間軸と周波数軸を入れ替え（Batch, Time, Frequencies）[3]。
-%             \item \textbf{Linear:} 周波数次元を埋め込み次元 (`embed_dim`) に変換[4]。
-%             \item \textbf{Encoder:} \textbf{PositionalEncoding} と N個の\textbf{EncoderBlock}から構成[4]。
-%             \item \textbf{Permute:} 埋め込み次元と時間軸を入れ替え（Batch, embed_dim, Time）[4]。
-%             \item \textbf{AdaptiveAvgPool1d:} 時間軸でグローバル平均プーリング（1）[4]。
-%             \item \textbf{Linear (Classifier):} 埋め込み次元をクラス数 (`n_classes`) に変換[4]。
-%             \item \textbf{Sigmoid:} マルチラベル出力のため[4]。
-%         \end{itemize}
-%     \end{itemize}
+
+\begin{frame}{研究背景を再考}
+  \begin{itemize}
+    \item \textbf{機械学習を用いる理由}
+    \begin{itemize}
+        \item 環境への適応
+        \begin{itemize}
+            \item 従来法は閾値で判断; 適応的な手法も存在
+            \item 機械学習は柔軟で多様な環境に適応可能
+        \end{itemize}
+        \item \textbf{在宅見守りへの応用}
+        \begin{itemize}
+            \item 支援があれば自立生活が可能な高齢者を対象に考える
+            \item 単一目的の検知より，様々な異常の兆候を柔軟に検知したい
+        \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% Slide 4: 全体ロードマップ
+\section{研究計画}
+\begin{frame}{仮ロードマップ}
+  \begin{itemize}
+    \item 今後2週間で計画を具体化
+    \item \textbf{7月: 基礎の準備}
+    \begin{itemize}
+        \item 背景サーベイ
+        \item マルチラベル音響イベント検知モデルの実装
+        \item データ収集
+    \end{itemize}
+    \item \textbf{8月: 必要な施策の実行}
+    \begin{itemize}
+        \item 半教師あり連合学習の調査・実装
+        \item シミュレーション方法の調査・検討
+    \end{itemize}
+    \item \textbf{9月: 異常検知層の追加}
+    \item \textbf{10月: FLの実装・実験}
+
+  \end{itemize}
+\end{frame}
+
+% Slide 5: 今後の実験評価計画
+\begin{frame}{具体化のための計画}
+  \begin{itemize}
+    \item 以下を検証し,研究計画の目処を付ける
+    \item \textbf{主要タスク}
+    \begin{itemize}
+        \item $\checkmark$基礎モデル構築
+        \item データ収集
+        \item データ不均衡対策
+        \item 半教師あり連合学習
+        \item 異常検知モデルの構築
+        \item シミュレーションの検討
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% Slide 6: 現在の進捗
+\section{現在の進捗}
+\begin{frame}[fragile]{実装: マルチラベル音響検知モデル (PoC)}
+  \begin{itemize}
+    \item \textbf{モデル:} CNN $\rightarrow$Transformerベース
+    \item \textbf{データ生成:}
+    \begin{itemize}
+        \item ESC-50データセットの一部カテゴリを使用
+        \item 2つの音の組み合わせを全パターン作成 (約12,000)
+        \item ラベルの組が均衡になるよう9,048データを選定
+    \end{itemize}
+    \item 使用ラベルは雨やドアのノック音など(cf. 補足)
+    \item 日常生活の基本的な音を想定
+  \end{itemize}
+\end{frame}
+
+% Slide 7: モデル定義
+% \begin{frame}{実装: モデル定義}
+%   \begin{itemize}
+%     \item 先輩の実装を参考に、Transformerベースのモデルを実装中
+%   \end{itemize}
+%     \textbf{モデル構造の概要}
+%     \begin{enumerate}
+%       \item Input (Batch, Freq, Time)
+%       \item BatchNorm1d
+%       \item Permute
+%       \item Linear (Embedding)
+%       \item \textbf{Encoder} (PositionalEncoding + N × EncoderBlock)
+%       \begin{itemize}
+%           \item EncoderBlock: Multi-Head Attention, FeedForward Network
+%       \end{itemize}
+%       \item Permute
+%       \item AdaptiveAvgPool1d
+%       \item Classifier (Linear)
+%       \item Sigmoid (Multi-label Output)
+%     \end{enumerate}
 % \end{frame}
 
-\begin{frame}{EncoderBlockの構成} % 詳細な説明は難易度を上げる部分で、その後難易度を下げる [22]
-    \begin{itemize}
-        \item EncoderBlockは、以下を繰り返す構造です[4, 5]：
-        \begin{itemize}
-            \item \textbf{MultiHeadAttention (MHA):} 複数の注意機構で特徴を捉える[4]。
-            \item \textbf{Add \& LayerNorm:} 残差接続と層正規化[4]。
-            \item \textbf{FeedForward Network (FFN):} 全結合層[5]。
-            \item \textbf{Add \& LayerNorm:} 再び残差接続と層正規化[5]。
-        \end{itemize}
-        \item このEncoderBlockが\textbf{N回}繰り返されることで、複雑な音響パターンを学習します[4]。
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{学習と評価の状況} % 現在の進捗を具体的に [2]
-    \begin{itemize}
-        \item \textbf{学習：}
-        \begin{itemize}
-            \item 作成したモデルを、事前に選定した9048データで訓練[6, 7]。
-            \item \textbf{ハイパーパラメータ例：}[6, 7]
+% Slide 8: 学習と評価
+\begin{frame}[fragile]{実装: 学習と評価}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{学習}
             \begin{itemize}
-                \item `embed_dim=128` (埋め込み次元)
-                \item `nhead=4` (Attentionのヘッド数)
-                \item `nhid=256` (FFNの隠れ層)
-                \item `nlayers=2` (エンコーダ層数)
-                \item `epochs=20`, `lr=1e-3`, `val-split=0.1`
+                \item 選択した9,048データで訓練
+                \item パラメータなど: 補足へ
+                \item マルチラベル用の構成
+\begin{minted}[fontsize=\small]{bash}
+* 出力: Sigmoid関数
+* 最適化アルゴリズム: Adam
+* 損失関数: バイナリクロスエントロピー
+\end{minted}
             \end{itemize}
-        \end{itemize}
-        \item \textbf{評価：}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{評価}
+            \begin{itemize}
+                \item 訓練時と異なる936データを使用
+                \item 各精度指標
+\begin{minted}[fontsize=\small]{bash}
+Micro Precision/Recall/F1 
+= 0.9655 / 0.8682 / 0.9143
+Macro   F1 = 0.8458
+\end{minted}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Slide 9: 研究目的の再考
+\begin{frame}{サーベイ: 研究背景の再考}
+  \begin{itemize}
+    \item \textbf{現状の反省:} 技術ありきで話を進めており、研究意義の説明が不足
+    \item \textbf{対応:}
+    \begin{itemize}
+        \item 関連論文を読み、研究背景を深掘り中
+        \item サーベイ論文を3本程度確認済み
+        \item 今後、サーベイ論文から引用されている重要論文を精読予定
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% Slide 10: データ収集
+\begin{frame}{データ収集: 異常イベントの音響データ}
+  \begin{itemize}
+    \item 音特有の異常（呼吸、咳き込み、悲鳴など）に関するデータを収集したい
+    \item \textbf{調査済みデータセット}
+    \begin{itemize}
+        \item \textbf{Deeply Nonverbal Vocalization Dataset}: 作者への連絡が必要
+        \item \textbf{Respiratory Sound Database}:
         \begin{itemize}
-            \item 評価データ修正済みだが未検証[7, 8]。
+            \item デジタル聴診器の音源が多く、行動認識には不向きか
+            \item `AKG C417L Microphone`の音源は使える可能性あり
+            \item ライセンスが不明
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{未確認データセット候補}
+    \begin{itemize}
+        \item \textbf{SAFE}: 転倒音
+        \item \textbf{TAME Pain Dataset}: 痛みに関連する音声
+        \item \textbf{Sound-Dr Dataset}: おそらく呼吸音
+        \item \textbf{F2LCough}: 咳の分類
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+% Slide 11: 今後のステップと課題
+\section{展望と課題}
+\begin{frame}{今後の展望}
+    \begin{itemize}
+        \item \textbf{各種対応の簡易的な試行} (所要時間とタスク内容の把握)
+        \begin{itemize}
+            \item \textbf{データ不均衡対応:} Focal Lossなどの導入を検討
+            \item \textbf{半教師あり連合学習}の調査,検証
+            \item \textbf{異常検知モデル}の構築
+            \item \textbf{シミュレーション}環境の検討
+        \end{itemize}
+        \item \textbf{AALサーベイの継続}
+        \begin{itemize}
+            \item 類似研究を調査し、研究の新規性・貢献を明確に
+        \end{itemize}
+        \item \textbf{データ収集と分析}
+        \begin{itemize}
+            \item 各種データセットの内容を精査
+            \item 音で検知可能な異常の兆候を洗い出す
         \end{itemize}
     \end{itemize}
 \end{frame}
 
-% ==============================================================================
-\section{研究目的の再考とサーベイ} % [8]
-% ==============================================================================
-\begin{frame}{研究意義の深掘り} % 発表者が「伝えるべき内容」を伝える [17]
+\begin{frame}{課題}
     \begin{itemize}
-        \item 研究目的の深掘りのため、調査を進めています[8]。
-        \item \textbf{技術ありき}で話を進めていたため、\textbf{研究意義の説明が不足}している点が課題です[8]。
-        \item 現在、関連論文を読み込み、研究意義の再考を行っています[8]。
+        \item \textbf{懸念事項: 自作データセットの評価方法}
         \begin{itemize}
-            \item 院試用研究計画書の背景を再考する[8]。
-            \item 卒論の研究意義再考のため調査する[8]。
-            \item サーベイ論文を3本程度確認し、そこから重要論文を精読予定[8]。
-        \end{itemize}
-        \item 後で、再考した内容を要約し、より良い説明を作成します[8]。
-    \end{itemize}
-\end{frame}
-
-% ==============================================================================
-\section{異常イベントの音響データ収集} % [8]
-% ==============================================================================
-\begin{frame}{必要な異常音データと既存データセット調査} % 具体的な課題とアプローチ [22]
-    \begin{itemize}
-        \item 音特有の異常イベントデータ（例：呼吸、咳き込み、悲鳴など）の収集が必要です[8]。
-        \item 現在、既存データセットの捜索を行っていますが、いくつか課題があります[8]。
-        \item \textbf{調査済みのデータセット：}
-        \begin{itemize}
-            \item \textbf{Deeply Nonverbal Vocalization Dataset:} 作者への連絡が必要[8, 9]。
-            \item \textbf{Respiratory Sound Database:} デジタル聴診器の音源が多く、行動認識には不向きな可能性[9]。AKG C417L Microphoneの音源のみ利用検討[9]。ライセンス情報なし[9]。
-            \item \textbf{SAFE:} 転倒音データ[9]。
-            \item \textbf{TAME Pain Dataset:} 痛みに関連する音声データ[9]。
-            \item \textbf{Sound-Dr Dataset:} 内容が不明確[9]。
-            \item \textbf{F2LCough:} 咳の分類データ[9]。
-        \end{itemize}
-        \item まずは咳や呼吸音を中心に捜索を進めます[9]。
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{自作データセット構築の懸念} % 懸念点を正直に提示する [43]
-    \begin{itemize}
-        \item \textbf{懸念：} \textbf{自作データセットの検証をどう行うか？}[10]
-        \begin{itemize}
-            \item 仮にデータセットを構築した場合、それで学習したモデルをどのように評価するか？[10]
-            \item どうすれば\textbf{実用に耐えうるモデル}であることを示せるのか？[10]
-            \item \textbf{評価方法}について検討する必要があります[10]。
-        \end{itemize}
-        \item \textbf{対応方針：}
-        \begin{itemize}
-            \item 現実的な想定のデータが見つかれば、それを優先的に使用[11]。
-            \item あるいは、データセットに関する論文を参考に、現実的なラベルの組み合わせを考慮し、時間をかけてデータを構築すれば問題ないか[11]。
-            \item \textbf{データセット構築段階が鍵}となると考えています[11]。
+            \item 構築したデータセットでモデルをどう評価する？
+            \item どうすれば実用に耐えうるモデルだと示せるか
+            \item マルチラベルデータ作成時,現実的なラベル設計が重要そう
         \end{itemize}
     \end{itemize}
 \end{frame}
 
-% ==============================================================================
-\section{今後のステップと課題} % [10]
-% ==============================================================================
-\begin{frame}{各種対応策の検討} % 具体的な行動計画 [2]
+
+\section{補足}
+
+\begin{frame}[fragile]{補足: 使用ラベル}
     \begin{itemize}
-        \item 各種対応策を簡単に試行し、何をすべきか、どのくらい時間がかかるかを把握します[10]。
-        \item \textbf{データ不均衡への対応：}
-        \begin{itemize}
-            \item 損失関数（例：\textbf{Focal loss}とその拡張）の変更を検討します[10]。
-            \item シンプルな対応で済む可能性も考慮します[10]。
-        \end{itemize}
-        \item \textbf{半教師あり連合学習 (Federated Semi-Supervised Learning)} の導入[10]。
-        \item \textbf{異常検知モデルの構築}[10]。
-        \item \textbf{シミュレーション}方法の検討[10]。
+        \item \textbf{使用ラベル (ESC-50より抜粋)}
+\begin{minted}[fontsize=\small]{python}
+allowed_categories = [
+    "rain", "door_wood_knock", "door_wood_creaks", 
+    "glass_breaking", "sneezing", "breathing", "coughing",
+    "footsteps", "laughing", "brushing_teeth", "snoring", 
+    "drinking_sipping", "pouring_water", "toilet_flush"
+]
+    \end{minted}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{今後のサーベイとデータ収集} % 今後の方向性 [1]
-    \begin{itemize}
-        \item \textbf{AALサーベイの継続：}
-        \begin{itemize}
-            \item 見守りという方向性に変更はありません[10]。
-            \item 施設自体の方向性も維持し、AALがそういった研究分野であることを再確認します[10]。
-            \item 関連論文を漁り、類似研究がないかを探しながら研究目的をさらに深掘りします[10]。
-        \end{itemize}
-        \item \textbf{データ収集の継続：}
-        \begin{itemize}
-            \item 各種データセットの分析と確認を続けます[10]。
-            \item 新たなデータセットを探すため、音ならではの異常の兆候を多角的に考えます[10]。
-        \end{itemize}
-    \end{itemize}
+
+\begin{frame}[fragile]{補足: 学習と評価}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \textbf{学習のHyperparameters:}
+\begin{minted}[fontsize=\scriptsize]{python}
+model = MelSpectrogramTransformer(
+    input_dim=n_mels,
+    embed_dim=128,      # 埋込次元
+    nhead=4,            # Attnヘッド数
+    nhid=256,           # FFN隠れ層
+    nlayers=2,          # Encoder層数
+    n_classes=num_classes,
+    max_len=X.shape[2])
+\end{minted}
+            \textbf{実行コマンド例:}
+\begin{minted}[fontsize=\scriptsize]{bash}
+uv run model_module/train.py \
+     --data ./dataset/esc50_multilabel.npz \
+     --batch 32 \
+     --epochs 20 \
+     --lr 1e-3 \
+     --val-split 0.1 \
+     --device cuda \
+     --save-model ./checkpoints/label-14_transformer.pth
+\end{minted}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \textbf{評価}
+             \textbf{実行コマンド例:}
+\begin{minted}[fontsize=\scriptsize]{bash}
+uv run ./model_module/eval.py \
+  --data    ./dataset/esc50_multilabel.npz \
+  --model   ./checkpoints/label-14_transformer.pth \
+  --batch   64 \
+  --device  mps \
+  --threshold 0.5
+
+  [RESULT]
+Threshold = 0.50
+Micro Precision/Recall/F1 
+= 0.9655 / 0.8682 / 0.9143
+Macro   F1                = 0.8458
+
+\end{minted}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-% ==============================================================================
-\section{まとめ} % [1]
-% ==============================================================================
-\begin{frame}{本研究計画の要点}
-    \begin{itemize}
-        \item \textbf{目的：} スマートホームにおける\textbf{異常音検知システム}の実現可能性を追求し、在宅介護・医療支援に貢献する[1]。
-        \item \textbf{進捗：} \textbf{マルチラベル音響検知モデルのPoC}を実装し、基本的な学習・評価環境を構築[2]。
-        \item \textbf{課題：}
-        \begin{itemize}
-            \item \textbf{研究意義の深掘り}[8]：技術ありきから、社会貢献に焦点を当てた説明へ。
-            \item \textbf{異常イベントデータの不足}[8]：信頼性の高いデータセットの確保と、自作データセットの評価方法確立。
-            \item \textbf{データ不均衡・FL・異常検知モデル}など、具体的な技術的課題への対応[10]。
-        \end{itemize}
-        \item \textbf{今後：} これらの課題を解決し、ロードマップに沿って研究を具体化します[1, 10]。
-    \end{itemize}
+\begin{frame}[fragile]{補足: Classification Report (per class):}
+\begin{minted}[fontsize=\scriptsize]{bash}
+                        precision    recall  f1-score   support
+            Class rain       0.94      0.84      0.89        19
+ Class door_wood_knock       1.00      0.85      0.92        20
+Class door_wood_creaks       1.00      0.83      0.91        18
+  Class glass_breaking       1.00      0.80      0.89        20
+        Class sneezing       0.89      0.85      0.87        20
+       Class breathing       1.00      0.55      0.71        20
+        Class coughing       0.89      0.96      0.92        25
+       Class footsteps       1.00      0.93      0.97        15
+        Class laughing       1.00      0.88      0.93        16
+  Class brushing teeth       1.00      1.00      1.00        25
+         Class snoring       0.95      0.95      0.95        19
+Class drinking_sipping       0.96      0.88      0.92        25
+   Class pouring_water       1.00      0.94      0.97        16
+    Class toilet_flush       0.00      0.00      0.00         0
+
+             micro avg       0.97      0.87      0.91       258
+             macro avg       0.90      0.80      0.85       258
+          weighted avg       0.97      0.87      0.91       258
+           samples avg       0.98      0.87      0.90       258
+\end{minted}
 \end{frame}
 
-% 質疑応答スライド [35, 64]
-\begin{frame}{ご清聴ありがとうございました}
-    \begin{center}
-        \Large \textbf{ご清聴ありがとうございました！} \\
-        \vspace{1cm}
-        \Large \textbf{ご質問やご意見を承ります}
-    \end{center}
-    \vspace{0.5cm}
+
+\begin{frame}{補足: 研究背景}
     \begin{itemize}
-        \item 発表へのご質問、ご意見がございましたらお気軽にお声がけください[43]。
-        \item スライドに関するご質問は、\textbf{各セクションの目次}をご参照ください。
+    \item サーベイ前に書いた研究背景
+    \item 今後サーベイを通じて詰める
     \end{itemize}
+ \includegraphics[width=5cm]{figures/qrcode_scrapbox.io.png}
 \end{frame}
+
 
 \end{document}
